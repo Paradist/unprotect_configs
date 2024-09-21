@@ -25,8 +25,4 @@ services:
 networks:
   internal_network:
     driver: bridge
-x-credentials:
 
-  &default-credentials
-  username: paradist
-  password: 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
