@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: ghcr.io/paradist/upw_mysql
+    container_name: mariadb
+    restart: always
+    environment:
+      MARIADB_RANDOM_ROOT_PASSWORD: true
+    networks:
+      - internal_network
+    volumes:
+      - /srv/upw/mysql:/var/lib/mysql  
+      - "./init_panel.sql:/docker-entrypoint-initdb.d/init.sql"
+
+  redis:
+    image: ghcr.io/paradist/upw_redis
+    container_name: redis
+    restart: always
+    networks:
+      - internal_network
+    volumes:
+      - /srv/upw/redis:/data
+
+networks:
+  internal_network:
+    driver: bridge
+x-credentials:
+
+  &default-credentials
+  username: paradist
+  password: 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
