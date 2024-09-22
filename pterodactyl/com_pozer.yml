@@ -4,6 +4,7 @@ services:
   mariadb:
     image: ghcr.io/paradist/upw_mysql
     container_name: mariadb
+    command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
       MARIADB_RANDOM_ROOT_PASSWORD: true
@@ -21,7 +22,13 @@ services:
       - internal_network
     volumes:
       - /srv/upw/redis:/data
-
+  
+  pterodactyl:
+    image: ghcr.io/paradist/pterodactyl:latest
+    networks:
+      - internal
+    ports:
+      - "8080:80"
 networks:
   internal_network:
     driver: bridge
