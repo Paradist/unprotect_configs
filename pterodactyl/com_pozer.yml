@@ -11,7 +11,7 @@ services:
     networks:
       - internal
     volumes:
-      - /srv/upw/mysql:/var/lib/mariadb  
+      - /srv/upw/mariadb:/var/lib/mysql 
       - "./init_panel.sql:/docker-entrypoint-initdb.d/init.sql"
 
   redis:
