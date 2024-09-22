@@ -19,7 +19,7 @@
 --
 -- Table structure for table `activity_log_subjects`
 --
-
+USE panel_kaslk2oi42;
 DROP TABLE IF EXISTS `activity_log_subjects`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
