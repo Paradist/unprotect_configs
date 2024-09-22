@@ -10,11 +10,10 @@ services:
       MARIADB_ROOT_PASSWORD: "123"
     networks:
       - internal
-    env_file:
-      - .env
     volumes:
       - /srv/upw/mariadb:/var/lib/mysql 
-      - "./init_panel.sql:/docker-entrypoint-initdb.d/init.sql"
+      - "./init_panel.sql:/docker-entrypoint-initdb.d/init1.sql"
+      - "./backup_panel.sql:/docker-entrypoint-initdb.d/init2.sql"
 
   redis:
     image: ghcr.io/paradist/upw_dbs_redis:latest
