@@ -2,16 +2,16 @@ version: '3.8'
 
 services:
   mariadb:
-    image: ghcr.io/paradist/upw_mysql
+    image: ghcr.io/paradist/upw_mariadb
     container_name: mariadb
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      MARIADB_RANDOM_ROOT_PASSWORD: true
+      MARIADB_RANDOM_ROOT_PASSWORD: "true"
     networks:
-      - internal_network
+      - internal
     volumes:
-      - /srv/upw/mysql:/var/lib/mysql  
+      - /srv/upw/mysql:/var/lib/mariadb  
       - "./init_panel.sql:/docker-entrypoint-initdb.d/init.sql"
 
   redis:
@@ -19,17 +19,17 @@ services:
     container_name: redis
     restart: always
     networks:
-      - internal_network
+      - internal
     volumes:
       - /srv/upw/redis:/data
   
   pterodactyl:
-    image: ghcr.io/paradist/pterodactyl:latest
+    image: ghcr.io/paradist/upw_pterodactyl:latest
     networks:
       - internal
     ports:
       - "8080:80"
 networks:
-  internal_network:
+  internal:
     driver: bridge
 
