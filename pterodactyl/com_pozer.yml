@@ -31,6 +31,9 @@ services:
       - "8080:80"
     env_file:
       - .env
+    depends_on:
+      - mariadb
+      - redis
 networks:
   internal:
     driver: bridge
