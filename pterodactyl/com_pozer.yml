@@ -12,7 +12,6 @@ services:
       - internal
     volumes:
       - /srv/upw/mariadb:/var/lib/mysql 
-      - "./init_panel.sql:/app/docker-entrypoint-initdb.d/init.sql"
 
   redis:
     image: ghcr.io/paradist/upw_dbs_redis:latest
