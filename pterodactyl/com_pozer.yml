@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   mariadb:
-    image: ghcr.io/paradist/upw_mariadb
+    image: ghcr.io/paradist/upw_dbs_mariadb:latest
     container_name: mariadb
     command: --default-authentication-plugin=mysql_native_password
     restart: always
@@ -15,7 +15,7 @@ services:
       - "./init_panel.sql:/docker-entrypoint-initdb.d/init.sql"
 
   redis:
-    image: ghcr.io/paradist/upw_redis
+    image: ghcr.io/paradist/upw_dbs_redis:latest
     container_name: redis
     restart: always
     networks:
